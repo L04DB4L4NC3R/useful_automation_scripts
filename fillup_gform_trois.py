@@ -14,7 +14,7 @@ driver = webdriver.Firefox(options=firefox_options)
 def nuke(driver, count):
     ctr = 0
     for i in range (0, count): 
-        driver.get("https://kutt.it/mgt-csr")
+        driver.get("YOUR_FORM_LINK")
         elem = driver.find_elements_by_class_name("freebirdThemedRadio")
 
         bias = 0
