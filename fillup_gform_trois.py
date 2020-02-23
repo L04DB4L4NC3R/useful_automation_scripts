@@ -10,10 +10,8 @@ firefox_options.add_argument("--headless")
 firefox_options.add_argument("--window-size=1920x1080")
 
 driver = webdriver.Firefox(options=firefox_options)
-driver.get("https://kutt.it/mgt-csr")
-elem = driver.find_elements_by_class_name("freebirdThemedRadio")
 
-def nuke(driver, elem, count):
+def nuke(driver, count):
     ctr = 0
     for i in range (0, count): 
         driver.get("https://kutt.it/mgt-csr")
@@ -34,7 +32,7 @@ def nuke(driver, elem, count):
 # assert "No results found." not in driver.page_source
 
 count=10
-nuke(driver, elem, count)
+nuke(driver, count)
 
 print("Succeeded!")
 driver.close()
