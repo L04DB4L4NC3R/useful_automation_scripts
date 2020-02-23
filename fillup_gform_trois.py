@@ -10,13 +10,13 @@ firefox_options.add_argument("--headless")
 firefox_options.add_argument("--window-size=1920x1080")
 
 driver = webdriver.Firefox(options=firefox_options)
-driver.get("https://kutt.it/mgt-csr")
+driver.get("YOUR_FORM_LINK")
 elem = driver.find_elements_by_class_name("freebirdThemedRadio")
 
 def nuke(driver, elem, count):
     ctr = 0
     for i in range (0, count): 
-        driver.get("https://kutt.it/mgt-csr")
+        driver.get("YOUR_FORM_LINK")
         elem = driver.find_elements_by_class_name("freebirdThemedRadio")
 
         bias = 0
