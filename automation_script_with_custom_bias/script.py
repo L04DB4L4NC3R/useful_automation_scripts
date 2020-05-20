@@ -100,9 +100,31 @@ def answering_n_times(form_link, no_of_responses, answers):
 #     filling_up_form(updated_driver, form_data)
 #     count-=1
 
-answers = generating_responses_for_questions(500)
-answering_n_times(
-    'https://docs.google.com/forms/d/e/1FAIpQLSfDjdSnpPywLBpZi6NasdW6t5XE7cMMnRilyo6nZQDTWLLkQQ/viewform',
-    500,
-    answers
+# answers = generating_responses_for_questions(500)
+# answering_n_times(
+#     'https://docs.google.com/forms/d/e/1FAIpQLSfDjdSnpPywLBpZi6NasdW6t5XE7cMMnRilyo6nZQDTWLLkQQ/viewform',
+#     500,
+#     answers
+# )
+
+
+def random_answering_n_times(form_link, no_of_responses):
+    original = int(no_of_responses)
+    while no_of_responses!= 0:
+        driver.get(form_link)
+        items = driver.find_elements_by_class_name('freebirdFormviewerViewItemsItemItem')
+        count = 0
+        for i in items:
+            option_box = i.find_element_by_class_name('freebirdFormviewerViewItemsRadioChoicesContainer')
+            options = option_box.find_elements_by_class_name('freebirdFormviewerViewItemsRadioOptionContainer')
+            choice = random.randint(0, len(options)-1)
+            options[choice].click()
+        submit = driver.find_element_by_class_name('freebirdFormviewerViewNavigationButtons')
+        submit.click()
+        no_of_responses-=1
+        print("Submitted {} successfully".format(original-no_of_responses))
+
+random_answering_n_times(
+    'https://forms.gle/uk2GiApQmwv76eaG6',
+    50
 )
